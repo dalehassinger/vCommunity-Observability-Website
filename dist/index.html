@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Explore vCommunity Observability, see the dashboards, and run the open-source project on your computer.">
+  <title>vCommunity Observability</title>
+  <link rel="icon" href="./assets/icon.png" type="image/png">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./site.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">
+        <img src="./assets/icon.png" alt="" width="34" height="34">
+        <span>vCommunity <strong>Observability</strong></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#setup">Setup</a>
+      </nav>
+      <a class="button button-outline header-github" href="https://github.com/dalehassinger/vCommunity-Observability">
+        GitHub <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="title">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="project-status"><span></span> Open-source project</p>
+          <h1 id="title">vCommunity <span>Observability</span></h1>
+          <p class="hero-summary">Collect vCenter and VCF Operations data in SQLite. Explore it in built-in dashboards or access it through Management Pack Builder.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#setup">Get started <span aria-hidden="true">↓</span></a>
+            <a class="button button-outline" href="https://github.com/dalehassinger/vCommunity-Observability">View repository <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <figure class="hero-preview">
+          <a class="preview-frame screenshot-link" href="./assets/host-health-dark.webp" data-caption="Host Health dashboard">
+            <span class="preview-bar"><span class="preview-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Host Health</span><span class="expand" aria-hidden="true">⤢</span></span>
+            <img src="./assets/host-health-dark.webp" alt="Host Health dashboard in dark mode with CPU and memory gauges and a table of ESXi hosts" width="1360" height="972" fetchpriority="high">
+          </a>
+          <figcaption><span class="sample-dot" aria-hidden="true"></span> Host Health dashboard using sample data</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <aside class="project-notice" aria-label="Project status">
+        <span class="notice-icon" aria-hidden="true">!</span>
+        <p><strong>Development prototype.</strong> Use in a lab or evaluation environment only.</p>
+        <a href="https://github.com/dalehassinger/vCommunity-Observability#whats-next">Project status <span aria-hidden="true">↗</span></a>
+      </aside>
+
+      <section class="section" id="overview" aria-labelledby="overview-heading">
+        <div class="section-heading">
+          <h2 id="overview-heading">What you can do</h2>
+          <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#modules-included">Explore the modules <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-icon dashboard-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+            <h3>Explore your environment</h3>
+            <p>Browse vSphere inventory, host health, datastore capacity, and DBH Insights from the built-in dashboards.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon" aria-hidden="true">↔</span>
+            <h3>Connect to VCF Operations</h3>
+            <p>Use the token-protected REST API with Management Pack Builder to pull collected data into VCF Operations.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon chat-icon" aria-hidden="true"><i></i></span>
+            <h3>Ask your own sources</h3>
+            <p>Run vCommunity Ask alongside the dashboards and use local Ollama models to chat with sources you choose.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section gallery-section" id="screenshots" aria-labelledby="screenshots-heading">
+        <div class="section-heading">
+          <h2 id="screenshots-heading">Screenshots</h2>
+          <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability/tree/main/docs/screenshots">All screenshots on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="gallery">
+          <figure class="gallery-card">
+            <a class="screenshot-link gallery-image" href="./assets/dbh-insights.webp" data-caption="DBH Insights dashboard">
+              <img src="./assets/dbh-insights.webp" alt="DBH Insights with inventory totals, capacity charts, and environment tables" width="1500" height="1000" loading="lazy">
+              <span class="expand" aria-hidden="true">⤢</span>
+            </a>
+            <figcaption><strong>DBH Insights</strong><span>Inventory, capacity, and exports</span></figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <a class="screenshot-link gallery-image" href="./assets/inventory-cluster-dark.webp" data-caption="vSphere Inventory">
+              <img src="./assets/inventory-cluster-dark.webp" alt="vSphere Inventory with a cluster selected in the inventory tree and its capacity summary" width="1600" height="900" loading="lazy">
+              <span class="expand" aria-hidden="true">⤢</span>
+            </a>
+            <figcaption><strong>vSphere Inventory</strong><span>Clusters, hosts, and virtual machines</span></figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <a class="screenshot-link gallery-image" href="./assets/ask-chat.webp" data-caption="vCommunity Ask chat">
+              <img src="./assets/ask-chat.webp" alt="vCommunity Ask answering a question about CPU Ready with numbered source citations" width="1440" height="900" loading="lazy">
+              <span class="expand" aria-hidden="true">⤢</span>
+            </a>
+            <figcaption><strong>vCommunity Ask</strong><span>Sample chat with source citations</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section setup-section" id="setup" aria-labelledby="setup-heading">
+        <div class="section-heading setup-heading">
+          <div>
+            <h2 id="setup-heading">Run it on your computer</h2>
+            <p>Start the dashboards with built-in sample data using Docker Compose.</p>
+          </div>
+          <div class="shell-picker" id="shell-picker" role="group" aria-label="Command shell" hidden>
+            <button type="button" data-shell="bash" aria-pressed="true">macOS / Linux</button>
+            <button type="button" data-shell="powershell" aria-pressed="false">Windows</button>
+          </div>
+        </div>
+        <ol class="steps" role="list">
+          <li>
+            <h3>Install Git and Docker Compose</h3>
+            <p>Install Git and a container engine. On macOS or Windows, start Docker Desktop or start Rancher Desktop with the <code>dockerd (moby)</code> engine. On Linux, install Docker Engine and the Compose plugin.</p>
+            <div class="install-links">
+              <a class="text-link" href="https://git-scm.com/install">Git</a>
+              <a class="text-link" href="https://docs.docker.com/desktop/">Docker Desktop</a>
+              <a class="text-link" href="https://rancherdesktop.io/">Rancher Desktop</a>
+              <a class="text-link" href="https://docs.docker.com/engine/install/">Docker Engine</a>
+              <a class="text-link" href="https://docs.docker.com/compose/install/linux/">Compose plugin</a>
+            </div>
+            <div class="code-block"><pre><code>git --version
+docker compose version</code></pre></div>
+          </li>
+          <li>
+            <h3>Clone the repository</h3>
+            <div class="code-block"><pre><code>git clone https://github.com/dalehassinger/vCommunity-Observability.git
+cd vCommunity-Observability</code></pre></div>
+          </li>
+          <li>
+            <h3>Copy the configuration and set a token</h3>
+            <p>Create <code>config/config.yaml</code> and <code>.env</code> before starting Docker. Copy the token printed by these commands into <code>VCO_API_TOKEN_MPBUILDER</code> in <code>.env</code>. Uncomment <code>VCO_MOCK=1</code> in the same file to enable sample data.</p>
+            <div class="code-block" data-commands="bash"><pre><code>cp config/config.example.yaml config/config.yaml
+cp .env.example .env
+openssl rand -hex 32</code></pre></div>
+            <div class="code-block" data-commands="powershell"><pre><code>Copy-Item config/config.example.yaml config/config.yaml
+Copy-Item .env.example .env
+$rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+$bytes = New-Object byte[] 32
+$rng.GetBytes($bytes)
+$rng.Dispose()
+-join ($bytes | ForEach-Object { $_.ToString('x2') })</code></pre></div>
+            <p class="step-note">Keep <code>.env</code> private. If your container engine restricts port 514, add <code>SYSLOG_PORT=1514</code> to <code>.env</code>.</p>
+          </li>
+          <li>
+            <h3>Prepare the folders and start the dashboards</h3>
+            <div class="code-block" data-commands="bash"><pre><code>mkdir -p data exports extra-modules control
+chmod 777 control
+if [ "$(uname -s)" = Linux ]; then
+  sudo chown -R 10001 data exports extra-modules
+fi
+docker compose up -d --build vco
+docker compose ps</code></pre></div>
+            <div class="code-block" data-commands="powershell"><pre><code>New-Item -ItemType Directory -Force data, exports, extra-modules, control | Out-Null
+docker compose up -d --build vco
+docker compose ps</code></pre></div>
+            <p class="step-note">The first build can take several minutes. Wait for <code>vco</code> to report <code>healthy</code>.</p>
+          </li>
+          <li>
+            <h3>Open the dashboards</h3>
+            <p>Visit <a class="text-link" href="http://localhost:8080">localhost:8080</a>. Open <strong>Modules &amp; API</strong>, then select <strong>Run collectors now</strong> for a module. Enter your token if prompted and open a dashboard from the sidebar.</p>
+            <p class="step-note">To stop the application, run <code>docker compose down</code> from the repository folder.</p>
+          </li>
+        </ol>
+        <div class="setup-more">
+          <details>
+            <summary>Connect a live vCenter</summary>
+            <p>Remove <code>VCO_MOCK=1</code> from <code>.env</code>, then rerun <code>docker compose up -d vco</code>. Go to <strong>Settings → Connections</strong>, add your vCenter address and read-only credentials, and select <strong>Save and test</strong> with your API token. Enable SSL verification when vCenter has a trusted certificate.</p>
+            <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#first-steps">vCenter setup in the README <span aria-hidden="true">↗</span></a>
+          </details>
+          <details>
+            <summary>Add vCommunity Ask</summary>
+            <ol>
+              <li>Install Ollama on the host computer and follow the <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#4-set-up-ollama-for-ask">OS-specific Ollama instructions</a> so the container can reach it.</li>
+              <li>Generate a second token using step 3 and set it as <code>ASK_API_TOKEN</code> in <code>.env</code>. Choose an installed chat model with <code>ASK_CHAT_MODEL</code>. The example below uses <code>qwen3:8b</code>.</li>
+            </ol>
+            <div class="code-block"><pre><code>ollama pull nomic-embed-text
+ollama pull qwen3:8b</code></pre></div>
+            <p>Create Ask's data and source folders, then start the Ask container.</p>
+            <div class="code-block" data-commands="bash"><pre><code>mkdir -p ask-data ask-knowledge ask-sources
+if [ "$(uname -s)" = Linux ]; then
+  sudo chown -R 10002 ask-data
+fi
+docker compose up -d --build vco-ask</code></pre></div>
+            <div class="code-block" data-commands="powershell"><pre><code>New-Item -ItemType Directory -Force ask-data, ask-knowledge, ask-sources | Out-Null
+docker compose up -d --build vco-ask</code></pre></div>
+            <p>Open <a class="text-link" href="http://localhost:8081">localhost:8081</a>, enter your Ask token, and select <strong>Settings → Test connection</strong>. Add a knowledge source, let it sync, then open <strong>New chat</strong>.</p>
+          </details>
+        </div>
+        <div class="setup-links">
+          <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#getting-started">Full README <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#try-it-with-sample-data-without-docker">Install with Python <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#troubleshooting">Troubleshooting <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>vCommunity Observability by Dale Hassinger</span>
+      <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability">GitHub repository <span aria-hidden="true">↗</span></a>
+    </div>
+  </footer>
+  <dialog class="lightbox" aria-labelledby="lightbox-title">
+    <div class="lightbox-bar">
+      <strong id="lightbox-title"></strong>
+      <form method="dialog"><button class="button button-outline" autofocus>Close <span aria-hidden="true">×</span></button></form>
+    </div>
+    <img alt="">
+  </dialog>
+</body>
+</html>
