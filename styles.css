@@ -159,7 +159,7 @@ h1, h2, h3, h4 { line-height: 1.2; }
 }
 .hero-product h2 { font-size: clamp(1.28rem, 2.6vw, 1.7rem); letter-spacing: -.025em; }
 .hero-product p { margin-block: .4rem 1rem; color: var(--muted); font-size: .92rem; }
-.hero-product .button { align-self: flex-start; margin-top: 1rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
 .preview-frame {
   display: block;
   overflow: hidden;
@@ -233,6 +233,7 @@ h1, h2, h3, h4 { line-height: 1.2; }
   margin-bottom: 1.05rem;
 }
 .section h2 { font-size: clamp(1.7rem, 3.4vw, 2.25rem); letter-spacing: -.04em; font-weight: 675; }
+.section-intro { max-width: 47rem; margin-top: .45rem; color: var(--muted); font-size: .96rem; }
 .text-link {
   color: var(--accent);
   text-decoration-color: #62ccfb68;
@@ -265,6 +266,20 @@ h1, h2, h3, h4 { line-height: 1.2; }
 }
 .product-details dd + dt { margin-top: .8rem; }
 .product-details > a { margin-top: auto; align-self: flex-start; }
+.integration-setup {
+  margin-top: .9rem;
+  padding: .8rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: .45rem;
+  color: var(--muted);
+  font-size: .92rem;
+}
+.integration-setup summary { color: var(--text); font-weight: 650; cursor: pointer; }
+.integration-setup summary:hover { color: var(--accent); }
+.integration-setup ol { margin-block: .85rem; padding-left: 1.5rem; }
+.integration-setup li + li { margin-top: .8rem; }
+.integration-setup strong { color: var(--text); }
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -353,7 +368,7 @@ h1, h2, h3, h4 { line-height: 1.2; }
 .steps h3, .steps h4 { font-size: 1.07rem; margin: .26rem 0 .6rem; }
 .steps p { color: var(--muted); font-size: .92rem; }
 .steps strong { color: var(--text); font-weight: 625; }
-p code, li > code {
+p code, li > code, dd code {
   color: #d1e9f6;
   background: #101d26;
   border-radius: .2rem;
@@ -447,6 +462,9 @@ body:has(.lightbox[open]) { overflow: hidden; }
   .site-nav { order: 1; width: 100%; margin-left: 0; gap: 1.25rem; }
   .site-nav a { padding-block: .48rem; }
   .header-github { margin-left: auto; }
+}
+@media (min-width: 681px) and (max-width: 800px) {
+  .hero-actions { display: grid; justify-items: start; }
 }
 @media (max-width: 680px) {
   .wrap { width: calc(100% - 2rem); }

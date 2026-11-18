@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Explore vCommunity Observability and vCommunity Ask, see screenshots of both apps, and set them up on your computer.">
+  <meta name="description" content="Set up vCommunity Observability and Ask, explore vSphere dashboards, and connect Ask to MCP tools for live vCenter and Salt queries.">
   <title>vCommunity Observability &amp; Ask</title>
   <link rel="icon" href="./assets/icon.png" type="image/png">
   <link rel="stylesheet" href="./styles.css">
@@ -43,16 +43,22 @@
               <span class="preview-bar"><span class="preview-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Host Health</span><span class="expand" aria-hidden="true">⤢</span></span>
               <img src="./assets/host-health-dark.webp" alt="Host Health dashboard with sample ESXi hosts, CPU gauges, and memory usage" width="1360" height="972" fetchpriority="high">
             </a>
-            <a class="button button-primary" href="#setup-observability">Set up Observability <span aria-hidden="true">↓</span></a>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#setup-observability">Set up Observability <span aria-hidden="true">↓</span></a>
+              <a class="button button-outline" href="#observability-gallery">See dashboards</a>
+            </div>
           </article>
           <article class="hero-product" aria-labelledby="hero-ask">
             <h2 id="hero-ask">Ask</h2>
-            <p>Chat with your documents and spreadsheets using local Ollama models and check the sources behind each answer.</p>
+            <p>Chat with your documents and spreadsheets using local Ollama, or query live lab systems through MCP.</p>
             <a class="preview-frame screenshot-link" href="./assets/ask-chat.webp" data-caption="vCommunity Ask sample chat">
               <span class="preview-bar"><span class="preview-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Chat with sources</span><span class="expand" aria-hidden="true">⤢</span></span>
               <img src="./assets/ask-chat.webp" alt="Sample vCommunity Ask response about CPU Ready with numbered citations" width="1440" height="900" fetchpriority="high">
             </a>
-            <a class="button button-primary" href="#setup-ask">Set up Ask <span aria-hidden="true">↓</span></a>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#setup-ask">Set up Ask <span aria-hidden="true">↓</span></a>
+              <a class="button button-outline" href="#mcp-salt">MCP &amp; Salt</a>
+            </div>
           </article>
         </div>
       </div>
@@ -76,9 +82,11 @@
               <dt>Explore vSphere inventory</dt>
               <dd>Browse clusters, hosts, VMs, and datastores. Use DBH Insights to review capacity and download inventory as XLSX or CSV.</dd>
               <dt>Monitor health and logs</dt>
-              <dd>Track host health and datastore capacity, map storage dependencies, and search incoming syslog messages or set up alerts.</dd>
+              <dd>Track host health and datastore capacity, map storage dependencies, and search syslog messages or send alerts to named webhooks.</dd>
               <dt>Bring data into VCF Operations</dt>
               <dd>Collectors store data in SQLite. Use the token-protected REST API to pull collected data into Management Pack Builder.</dd>
+              <dt>Put the lab on a wall display</dt>
+              <dd>Apple HomeView cycles through lab dashboards and can show the latest answer from a scheduled Ask prompt.</dd>
             </dl>
             <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#modules-included">Observability modules on GitHub <span aria-hidden="true">↗</span></a>
           </article>
@@ -91,6 +99,8 @@
               <dd>Ollama generates the answer on your computer. Open numbered citations to see the passages or documents Ask used.</dd>
               <dt>Ask questions about spreadsheets</dt>
               <dd>Use a DBH Insights or RVTools export. Ask can show its read-only SQL query, chart the results, or generate an HTML report.</dd>
+              <dt>Save and schedule prompts</dt>
+              <dd>Reuse prompts with their sources and fill-in variables. Schedule answers for delivery by email or a named webhook.</dd>
             </dl>
             <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#vcommunity-ask-local-ai-chat">Ask documentation on GitHub <span aria-hidden="true">↗</span></a>
           </article>
@@ -142,6 +152,55 @@
             </div>
           </section>
         </div>
+      </section>
+
+      <section class="section" id="mcp-salt" aria-labelledby="mcp-salt-heading">
+        <div class="section-heading">
+          <div>
+            <h2 id="mcp-salt-heading">MCP &amp; Salt in Ask</h2>
+            <p class="section-intro">Model Context Protocol (MCP) connects Ask to tools that can inspect your lab as you chat. Tool results appear as numbered sources you can open and verify.</p>
+          </div>
+        </div>
+        <div class="split">
+          <article class="product-details">
+            <h3>MCP tool calls</h3>
+            <dl>
+              <dt>Use a host-side tool server</dt>
+              <dd>The Ask container sends token-protected requests to the Ask host agent. The agent runs servers from your <code>.mcp.json</code> over standard input and output, so they can use the host's PowerShell modules and lab configuration.</dd>
+              <dt>Query live lab systems</dt>
+              <dd>Dale's PowerShell server exposes 39 tools, including vCenter snapshot audits, VCF Operations metrics and alerts, switch diagnostics, and Salt checks.</dd>
+              <dt>Choose what can run</dt>
+              <dd>Read-only tools default to <strong>Allowed</strong>. Actions such as sending email, updating DNS, or writing a report default to <strong>Ask first</strong> and wait for <strong>Run</strong> in chat. Set a tool to <strong>Off</strong> to hide it from the model.</dd>
+            </dl>
+            <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#mcp-tools-your-own-mcp-servers">MCP setup and policies on GitHub <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="product-details">
+            <h3>20 read-only Salt tools</h3>
+            <dl>
+              <dt>Inventory and correlate minions</dt>
+              <dd>See which Salt minions respond, look up their grains such as OS and hardware, and match them to vCenter VMs by BIOS UUID, name, hostname, or IP.</dd>
+              <dt>Inspect Linux and Windows guests</dt>
+              <dd>Check uptime, memory, disks, interfaces, services, installed packages, and pending updates. Compare VMware Tools versions inside a guest with vCenter.</dd>
+              <dt>Review jobs and configuration drift</dt>
+              <dd>Look up running jobs, history, and results. <code>Get-Salt-Config-Drift</code> previews state changes with <code>test=True</code>. Target a specific minion, a pattern such as <code>web*</code>, or a comma-separated list.</dd>
+            </dl>
+            <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#the-tools-in-dales-powershell-mcp-server">Full PowerShell and Salt tool catalog on GitHub <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <details class="integration-setup" id="setup-mcp">
+          <summary>Set up MCP and Salt on macOS</summary>
+          <ol>
+            <li>Start Ask and choose an Ollama model with tool-calling support. Have a local MCP server with a <code>stdio</code> entry in <code>.mcp.json</code>. To use Dale's Salt tools, configure the PowerShell server with access to your Salt master and its minions. The example reads lab connection settings from <code>Home-Lab-Config.yaml</code> beside the MCP folder.</li>
+            <li>From the vCommunity Observability repository, install the Ask host agent with the path to your MCP config.
+              <div class="code-block"><pre><code>./ask/agent/install.sh --mcp-config /path/to/.mcp.json</code></pre></div>
+            </li>
+            <li>Put the installer’s <code>ASK_AGENT_TOKEN</code> in <code>.env</code> and recreate the Ask container. The default host agent URL is <code>http://host.docker.internal:9101</code>.
+              <div class="code-block"><pre><code>docker compose up -d vco-ask</code></pre></div>
+            </li>
+            <li>In Ask, open <strong>MCP tools</strong> under <strong>Knowledge</strong>. Verify that your server is running and review its tool policies. In a new chat, select <strong>Sources → Tools: &lt;server&gt;</strong>.</li>
+          </ol>
+          <p>Try asking which Linux VMs have pending kernel updates or which Salt states would change on <code>web*</code>.</p>
+        </details>
       </section>
 
       <section class="section setup-section" id="setup" aria-labelledby="setup-heading">
@@ -259,10 +318,12 @@ docker compose ps</code></pre></div>
               <li>
                 <h4>Index a source and ask a question</h4>
                 <p>Visit <a class="text-link" href="http://localhost:8081">localhost:8081</a>, enter your Ask token, and select <strong>Settings → Test connection</strong>. Go to <strong>Knowledge sources → Add source</strong>, wait for the sync, then select the source in <strong>New chat</strong>.</p>
+                <p class="step-note">In an empty question box, press <strong>↑</strong> or <strong>↓</strong> to revisit earlier questions from that chat.</p>
                 <details>
                   <summary>Start with a PDF</summary>
                   <p>Choose <strong>PDF documents</strong> as the source type, save it, then upload a product guide or runbook. Ask a question about it and open a citation to check the relevant page.</p>
                 </details>
+                <p class="step-note"><a class="text-link" href="#mcp-salt">Connect MCP and Salt tools <span aria-hidden="true">↑</span></a></p>
               </li>
             </ol>
           </section>
@@ -272,6 +333,7 @@ docker compose ps</code></pre></div>
           <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#getting-started">Full README <span aria-hidden="true">↗</span></a>
           <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#try-it-with-sample-data-without-docker">Observability with Python <span aria-hidden="true">↗</span></a>
           <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#troubleshooting">Troubleshooting <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://github.com/dalehassinger/vCommunity-Observability#changelog">Changelog <span aria-hidden="true">↗</span></a>
         </div>
       </section>
     </div>
